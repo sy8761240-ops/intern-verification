@@ -16,7 +16,7 @@
     hgroup h1{margin:0;font-size:20px;color:#0f1724}
     hgroup p{margin:2px 0 0;color:var(--muted);font-size:13px}
 
-    main{display:grid;grid-template-columns:1fr 320px;gap:24px;padding:24px}
+    main{display:block;gap:24px;padding:24px}
     .content{padding-right:6px}
     .label{font-size:13px;color:var(--muted);margin-bottom:6px}
     .value{font-size:16px;color:#0f1724;font-weight:600}
@@ -105,23 +105,7 @@
 
         </section>
 
-        <aside>
-          <div class="qr-card">
-            <div style="font-weight:700;font-size:15px">Scan to Verify</div>
-            <div class="qr" id="qrImage">QR</div>
-            <div class="small" style="margin-top:6px">Scan with your phone camera to open this verification</div>
-            <div style="height:12px"></div>
-            <div class="verify-actions">
-              <a class="btn btn-primary" href="/certificate.pdf" download>Download Certificate (PDF)</a>
-              <a class="btn btn-ghost" href="#" id="openRepo">Open GitHub Repo</a>
-            </div>
-          </div>
-
-          <div style="margin-top:14px;padding:12px;border-radius:10px;background:#fff;border:1px solid #eef3fb">
-            <div class="label">Verification Steps</div>
-            <div class="meta" style="margin-top:8px">1. Scan QR → page opens<br>2. Check Verification ID &amp; candidate details<br>3. Click "Open GitHub Repo" to view submitted code and report</div>
-          </div>
-        </aside>
+        
       </main>
 
       <footer>
@@ -132,31 +116,6 @@
     </div>
   </div>
 
-  <script>
-    // Small script to render a QR image using an external generator (replace with your final URL)
-    (function(){
-      const finalURL = location.href; // change to your live URL if needed
-      const qrDiv = document.getElementById('qrImage');
-      const img = document.createElement('img');
-      img.alt = 'QR code';
-      img.style.width = '160px';
-      img.style.height = '160px';
-      img.style.borderRadius = '8px';
-      // Use goqr.me API to generate a quick QR at runtime (no server needed)
-      const api = 'https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=' + encodeURIComponent(finalURL);
-      img.src = api;
-      qrDiv.innerHTML = '';
-      qrDiv.appendChild(img);
-
-      // Example links — replace with your real repo & report paths
-      const repoLink = document.getElementById('repoLink');
-      const reportLink = document.getElementById('reportLink');
-      const openRepo = document.getElementById('openRepo');
-      repoLink.href = 'https://github.com/your-username/project-repo';
-      reportLink.href = '/certificate.pdf';
-      openRepo.href = repoLink.href;
-    })();
-  </script>
+  <script>\n  (function(){\n    // Set repository and report links (no QR)\n    const repoLink = document.getElementById('repoLink');\n    const repo
 </body>
 </html>
-
